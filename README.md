@@ -22,9 +22,16 @@ npm run build
  vue-cli@3.0、vue-router、vuex、axios、element@2.82、echarts、@tinymce/tinymce-vue,tinymce、sass、eslint
 ```
 ### 博客地址
- <a href="http://chenfl.top">
+ <a href="http://chenfl.top" target="_blank">
     http://chenfl.top
     </a>
 
-### 项目github地址
- [https://github.com/dreamcfl/admin-pc](https://github.com/dreamcfl/admin-pc)
+### 演示地址
+ <a href="http://chenfl.top" target="_blank">
+    http://chenfl.top
+    </a>
+    
+### github地址
+ <a href="https://github.com/dreamcfl/admin-pc" target="_blank">
+   https://github.com/dreamcfl/admin-pc
+    </a>
