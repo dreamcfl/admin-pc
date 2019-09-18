@@ -1,29 +1,30 @@
 # vue-admin
 
-## Project setup
+### 安装依赖包
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
+### 后台管理系统模板
 
-### Lints and fixes files
+#### 技术栈使用：
 ```
-npm run lint
+ vue-cli@3.0、vue-router、vuex、axios、element@2.82、echarts、@tinymce/tinymce-vue,tinymce、sass、eslint
 ```
+### 博客地址
+ <a href="http://chenfl.top">
+    http://chenfl.top
+    </a>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 项目github地址
+ [https://github.com/dreamcfl/admin-pc](https://github.com/dreamcfl/admin-pc)
