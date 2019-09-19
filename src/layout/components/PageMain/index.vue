@@ -2,9 +2,11 @@
   <div class="pageMain">
     <transition name="fade-page" mode="out-in">
       <keep-alive>
-        <router-view v-if="!$route.meta.noCache"></router-view>
+        <router-view v-if="$route.meta.noCache"></router-view>
       </keep-alive>
-      <router-view v-if="$route.meta.noCache"></router-view>
+    </transition>
+    <transition name="fade-page" mode="out-in">
+      <router-view v-if="!$route.meta.noCache"></router-view>
     </transition>
   </div>
 </template>

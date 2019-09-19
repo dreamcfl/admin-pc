@@ -22,6 +22,9 @@ export default {
   components: {
     adminComponent,
     userComponent
+  },
+  mounted(){
+    window.console.log('刷新')
   }
 };
 </script>
