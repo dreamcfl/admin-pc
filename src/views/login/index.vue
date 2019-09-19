@@ -109,6 +109,26 @@ export default {
           });
           this.$store.dispatch("user/setToken", this.ruleForm.username);
           this.$store.dispatch("user/setName", this.ruleForm.username);
+          var role = [
+            "Dashbord",
+            "Permission",
+            "PageUser",
+            "Roles",
+            "Table",
+            "BaseTable",
+            "ComplexTable",
+            "Components",
+            "Upload",
+            "Echarts",
+            "Sldie-chart",
+            "Dynamic-chart",
+            "Excel",
+            "Excel-out",
+            "Excel-in",
+            "error",
+            "Page404"
+          ];
+          this.$store.dispatch("user/setRole", role);
           this.$router.push(this.$route.query.redirect);
           if (this.notifyObj) {
             this.notifyObj.close();

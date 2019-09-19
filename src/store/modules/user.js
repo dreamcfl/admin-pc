@@ -3,7 +3,7 @@ import Cookie from "@u/cookie";
 const state = {
   token: Cookie.get("token") ? Cookie.get("token") : "", // 认证凭证'
   userName: Cookie.get("userName") ? Cookie.get("userName") : "",
-  roles: [],
+  roles: Cookie.get("roles") ? JSON.parse(Cookie.get("roles")) : [],
   introduce: ""
 };
 const mutations = {
@@ -18,9 +18,11 @@ const mutations = {
     state.introduce = "";
     Cookie.delete("token");
     Cookie.delete("userName");
+    Cookie.delete("roles");
   },
   SET_ROLES(state, payload) {
     state.roles = payload;
+    Cookie.set("roles", JSON.stringify(payload));
   },
   SET_NAME(state, payload) {
     state.userName = payload;
@@ -40,8 +42,10 @@ const actions = {
     commit("DEL_TOKEN");
   },
   setName({ commit }, value) {
-    window.console.log(value);
     commit("SET_NAME", value);
+  },
+  setRole({ commit }, value) {
+    commit("SET_ROLES", value);
   }
 };
 export default {

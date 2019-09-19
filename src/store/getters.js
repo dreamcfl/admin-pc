@@ -12,6 +12,6 @@ const getters = {
       return true;
     }
   },
-  msgIsShow: state => state.app.msgIsShow,
+  msgIsShow: state => state.app.msgIsShow
 };
 export default getters;

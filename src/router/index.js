@@ -185,9 +185,9 @@ export const asyncRoutes = [
         name: "Page404",
         component: () => import("@v/error-page/404"),
         meta: { title: "404", icon: "el-icon-s-release" }
-      },
+      }
     ]
-  },
+  }
 ];
 const creatRouter = () => {
   return new Router({
@@ -224,7 +224,7 @@ router.beforeEach(async (to, from, next) => {
         router.addRoutes(addRoutes);
         // hack method to ensure that addRoutes is complete
         // set the replace: true, so the navigation will not leave a history record
-        next({...to,replace:true});
+        next({ ...to, replace: true });
       }
     } else {
       next({

@@ -50,8 +50,7 @@ export default {
 };
 </script>
 <style scoped>
-.logo-size{
+.logo-size {
   font-size: 32px;
 }
 </style>
-
