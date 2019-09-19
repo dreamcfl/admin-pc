@@ -1,0 +1,221 @@
+#app {
+  // .driver-fix-stacking {
+  //   position: relative;
+  //   overflow: hidden;
+  // }
+  .wrapper {
+    @extend %width-height;
+    position: relative;
+    background-color: $bg-gary;
+    .wrapper_con {
+      height: calc(100% - 50px);
+      width: 100%;
+      // margin-top: 50px;
+      padding-top: 50px;
+    }
+  }
+  .pageMain {
+    margin-left: 200px;
+    transition: all 0.3s;
+    height: 100%;
+    & > div {
+      padding: 36px 30px;
+      background: $bg-gary;
+    }
+  }
+  .noPadding {
+    padding: 0 !important;
+  }
+}
+// sideBar
+#app {
+  .sideBar {
+    width: $sideBarWidth;
+    height: calc(100% - 50px);
+    background-color: $dark-blue;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    transition: width 0.3s;
+    z-index: 999;
+    .el-scrollbar {
+      height: 100%;
+      .el-scrollbar__wrap {
+        overflow-x: hidden !important;
+      }
+    }
+    .el-menu {
+      @extend %width-height;
+      border: none;
+    }
+  }
+}
+// header
+.header {
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 999;
+}
+.header_l {
+  width: 200px;
+  height: 100%;
+  float: left;
+  background-color: #3a3f51;
+  box-sizing: border-box;
+  border-bottom: 1px solid #454b61;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+.header_r {
+  height: 100%;
+  margin-left: 200px;
+  background-color: $white;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+.logoLink {
+  color: $white !important;
+  font-size: 15px;
+  margin-left: 18px;
+  display: inline-block;
+  font-weight: bold;
+  height: 100%;
+  line-height: 50px;
+  img {
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 8px;
+    position: relative;
+    top: -3px;
+  }
+}
+.headr_d1 {
+  float: left;
+  height: 100%;
+  margin-left: 20px;
+  .sidecoll {
+    float: left;
+    margin-top: 16px;
+  }
+  .bread {
+    float: left;
+    margin: 18px 0 0 20px;
+  }
+}
+.headr_d2 {
+  float: right;
+  height: 100%;
+  .userDrop {
+    height: 50px;
+    .userDrop_text {
+      margin-right: 8px;
+      i {
+        margin-left: 2px;
+      }
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+  }
+  .userDd {
+    .el-dropdown-menu__item {
+      padding: 0 12px;
+    }
+  }
+  .headrUl {
+    height: 100%;
+    li {
+      float: left;
+      height: 100%;
+      line-height: 50px;
+      padding: 0 10px;
+      cursor: pointer;
+      .iconFont {
+        font-size: 18px;
+        height: 50px;
+        vertical-align: initial;
+        line-height: 50px;
+      }
+      .el-badge__content.is-fixed.is-dot {
+        right: 9px;
+        top: 16px;
+      }
+      &:hover {
+        background-color: #f6f8f8;
+      }
+      &:last-child {
+        padding: 0 20px 0 10px;
+      }
+    }
+  }
+}
+.el-dropdown-menu__item {
+  i {
+    font-size: 16px;
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+.notificatBar {
+  position: fixed;
+  height: calc(100% - 50px);
+  bottom: 0;
+  right: 0;
+  width: 360px;
+  box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.2);
+  background-color: $white;
+  z-index: 99;
+}
+// collapse
+#app {
+  .closeBar {
+    .sideBar {
+      width: 64px !important;
+      .el-menu--collapse > .sideItem .el-menu-item [class^='el-icon-'],
+      .el-menu--collapse
+        > .sideItem
+        .el-submenu
+        > .el-submenu__title
+        [class^='el-icon-'] {
+        margin: 0;
+        vertical-align: middle;
+        width: 24px;
+        text-align: center;
+      }
+      .el-menu--collapse > .sideItem .el-menu-item span,
+      .el-menu--collapse > .sideItem .el-submenu > .el-submenu__title span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
+      .el-menu--collapse > .sideItem .el-menu-item .el-submenu__icon-arrow,
+      .el-menu--collapse
+        > .sideItem
+        .el-submenu
+        > .el-submenu__title
+        .el-submenu__icon-arrow {
+        display: none;
+      }
+    }
+    .header_l {
+      width: 64px !important;
+      overflow: hidden;
+    }
+    .header_r,
+    .pageMain {
+      margin-left: 64px;
+    }
+  }
+}

@@ -2,9 +2,8 @@ const path = require("path");
 const resolve = function(dir) {
   return path.join(__dirname, dir);
 };
-
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "./" : "./",
   outputDir: "dist",
   assetsDir: "static",
   lintOnSave: true, // 是否开启eslint保存检测
@@ -25,8 +24,7 @@ module.exports = {
     port: "8080",
     hot: true,
     /* 自动打开浏览器 */
-    //  open: false,
-    open: true,
+    open: false,
     overlay: {
       warning: false,
       error: true

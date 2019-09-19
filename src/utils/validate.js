@@ -168,3 +168,7 @@ export function validateNumberII(rule, value, callback) {
     callback();
   }
 }
+
+export function isAbsolutePath(path) {
+  return /^(https?|tel|mailto)/.test(path)
+}
