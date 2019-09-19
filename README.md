@@ -27,11 +27,14 @@ npm run build
     </a>
 
 ### 演示地址
- <a href="http://chenfl.top" target="_blank">
-    http://chenfl.top
+ <a href="https://dreamcfl.github.io/admin-pc/dist/" target="_blank">
+    https://dreamcfl.github.io/admin-pc/dist/
     </a>
     
 ### github地址
  <a href="https://github.com/dreamcfl/admin-pc" target="_blank">
    https://github.com/dreamcfl/admin-pc
     </a>
+    ```
+    注：项目针对别人的模板进行了解析，重构，优化，仅供自己开发使用。地址：https://github.com/gcddblue/vue-admin-webapp
+    ```
