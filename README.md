@@ -19,7 +19,7 @@ npm run build
 
 #### 技术栈使用：
 ```
- vue-cli@3.0、vue-router、vuex、axios、element@2.82、echarts、@tinymce/tinymce-vue,tinymce、sass、eslint
+ vue-cli@3.0、vue-router、vuex、axios、element@2.82、echarts、@tinymce/tinymce-vue,tinymce、sass、eslint、screenfull、vue-count-to、xlsx
 ```
 ### 博客地址
  <a href="http://chenfl.top" target="_blank">
@@ -35,6 +35,8 @@ npm run build
  <a href="https://github.com/dreamcfl/admin-pc" target="_blank">
    https://github.com/dreamcfl/admin-pc
     </a>
+
+### 注
     ```
     注：项目针对别人的模板进行了解析，重构，优化，仅供自己开发使用。地址：https://github.com/gcddblue/vue-admin-webapp
     ```
