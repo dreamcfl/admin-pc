@@ -24,35 +24,56 @@
       <el-tab-pane label="Timeline">
         <!-- <el-button type="primary" slot="label">Timeline</el-button> -->
         <el-timeline>
-          <el-timeline-item timestamp="2019/4/12" placement="top">
+          <el-timeline-item timestamp="2019/9/19" placement="top">
             <el-card>
-              <h4>更新 Github 模板</h4>
-              <p>提交于 2019/4/12 20:46</p>
-            </el-card>
-          </el-timeline-item>
-          <el-timeline-item timestamp="2019/4/3" placement="top">
-            <el-card>
-              <h4>更新 Github 模板</h4>
-              <p>提交于 2018/4/3 20:46</p>
-            </el-card>
-          </el-timeline-item>
-          <el-timeline-item timestamp="2019/4/2" placement="top">
-            <el-card>
-              <h4>更新 Github 模板</h4>
-              <p>提交于 2019/4/2 20:46</p>
-            </el-card>
-          </el-timeline-item>
-          <el-timeline-item timestamp="2019/4/1" placement="top">
-            <el-card>
-              <h4>更新 Github 模板</h4>
-              <p>提交于 2019/4/1 20:46</p>
+              <div class="font-size-content">
+                <h4>更新 Github 模板</h4>
+                <p>提交于 2019/9/19 14:00</p>
+              </div>
             </el-card>
           </el-timeline-item>
         </el-timeline>
       </el-tab-pane>
       <el-tab-pane label="Message">
         <!-- <el-button type="success" slot="label">Message</el-button> -->
-        Message
+        <el-timeline>
+          <el-timeline-item timestamp="" placement="top">
+            <el-card>
+              <div class="font-size-content">
+                <p>
+                  <span>项目代码地址：</span>
+                  <a
+                    href="https://github.com/dreamcfl/admin-pc"
+                    target="_blank"
+                  >
+                    https://github.com/dreamcfl/admin-pc</a
+                  >
+                </p>
+                <p>
+                  <span> 演示地址：</span
+                  ><a
+                    href="https://dreamcfl.github.io/admin-pc/dist/"
+                    target="_blank"
+                  >
+                    https://dreamcfl.github.io/admin-pc/dist/</a
+                  >
+                </p>
+                <p>
+                  <span> 个人博客：</span
+                  ><a href="http://chenfl.top" target="_blank">
+                    http://chenfl.top</a
+                  >
+                </p>
+                <p>
+                  <span> CSDN：</span
+                  ><a href="https://blog.csdn.net/namechenfl" target="_blank">
+                    https://blog.csdn.net/namechenfl</a
+                  >
+                </p>
+              </div>
+            </el-card>
+          </el-timeline-item>
+        </el-timeline>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -67,6 +88,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.font-size-content p {
+  margin: 20px;
+  span {
+    font-weight: 600;
+  }
+  a {
+    text-decoration: underline !important;
+  }
+}
 .personal_h {
   width: 100%;
   height: 230px;
