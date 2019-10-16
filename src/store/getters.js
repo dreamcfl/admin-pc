@@ -5,6 +5,7 @@ const getters = {
   introduce: state => state.user.introduce,
   routes: state => state.permission.routes,
   addRoutes: state => state.permission.addRoutes,
+  isFindRouter: state => state.permission.isFindRouter,
   opened: state => {
     if (state.app.opened === "false") {
       return false;

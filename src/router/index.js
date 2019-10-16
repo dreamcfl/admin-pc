@@ -212,7 +212,7 @@ router.beforeEach(async (to, from, next) => {
   } else {
     if (store.getters.token) {
       const hasRoles = store.getters.addRoutes.length > 0;
-      if (hasRoles) {
+      if (hasRoles || store.getters.isFindRouter) {
         next();
       } else {
         var roles = [];

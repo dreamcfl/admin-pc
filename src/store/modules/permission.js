@@ -2,12 +2,16 @@ import { asyncRoutes, currencyRoutes } from "@/router";
 
 const state = {
   routes: [],
-  addRoutes: []
+  addRoutes: [],
+  isFindRouter: false
 };
 const mutations = {
   SET_ROUTES(state, payload) {
     state.routes = [...currencyRoutes, ...payload];
     state.addRoutes = payload;
+  },
+  SET_ISFINDROUTER(state, value){
+    state.isFindRouter = value
   }
 };
 // 遍历asyncRoutes动态路由
@@ -39,6 +43,7 @@ const actions = {
         routes = asyncRoutes || "";
       }
       commit("SET_ROUTES", routes);
+      commit('SET_ISFINDROUTER', true)
       resolve(routes);
     });
   }
