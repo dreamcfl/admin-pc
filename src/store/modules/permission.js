@@ -30,7 +30,6 @@ const mutations = {
 // }
 const actions = {
   getAsyncRoutes({ commit, rootGetters }, roles) {
-    window.console.log(rootGetters);
     return new Promise(resolve => {
       let routes = [];
       if (rootGetters.userName === "admin") {
@@ -46,7 +45,10 @@ const actions = {
       commit('SET_ISFINDROUTER', true)
       resolve(routes);
     });
-  }
+  },
+  delIsFindRouter({ commit }) {
+    commit("SET_ISFINDROUTER",false);
+  },
 };
 
 export default {

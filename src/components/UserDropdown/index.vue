@@ -33,6 +33,7 @@ export default {
   methods: {
     _loginOut() {
       this.$store.dispatch("user/delToken");
+      this.$store.dispatch("permission/delIsFindRouter");
       this.$router.push({ name: "login" });
     }
   }
