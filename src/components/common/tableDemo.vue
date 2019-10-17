@@ -5,6 +5,10 @@
       :tableListData="tableListData"
       :tableBtn="tableBtn"
       :currentData="currentData"
+      @onPageChange="onPageChange"
+      @onSizeChange="onSizeChange"
+      @handleEdit="handleEdit"
+      @handleDelete="handleDelete"
       v-if="pageReset"
     ></Table>
   </div>
