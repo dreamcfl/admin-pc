@@ -219,6 +219,10 @@
     }
   }
 }
+// 其他UI样式修改
 .operate-area{
   margin: 0 0 20px;
+}
+.el-dialog__footer {
+  text-align: center!important;
 }

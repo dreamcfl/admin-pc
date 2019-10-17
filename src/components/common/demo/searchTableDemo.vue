@@ -31,11 +31,13 @@
         ></Table>
       </div>
     </el-card>
+    <dialog-com :dialogObj="dialogObj" @reflash="getList"></dialog-com>
   </div>
 </template>
 
 <script>
 import { STUDENTSTATUSLIST, STUDENTSTATUS } from "@u/wordbook";
+import dialogCom from "./dialogCom";
 import Search from "@c/common/search";
 import Table from "@c/common/table";
 export default {
@@ -53,12 +55,20 @@ export default {
       },
       studentStatusList: STUDENTSTATUSLIST,
       tableData: [],
-      currentData: {}
+      currentData: {},
+      dialogObj: {
+        id: "",
+        title: "",
+        read: false,
+        show: false,
+        form: {}
+      }
     };
   },
   components: {
     Search,
-    Table
+    Table,
+    dialogCom
   },
   created() {
     // 搜索
@@ -163,9 +173,22 @@ export default {
     },
     handleDelete() {
       window.console.log("2");
-      this.confirms("此操作不可逆，确认删除？");
+      this.$confirm("此操作将删除该用户?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(() => {
+        this.$message({
+          type: "success",
+          message: "删除成功！"
+        });
+      });
     },
-    add() {},
+    add() {
+      this.dialogObj.id = "";
+      this.dialogObj.show = true;
+      this.dialogObj.title = "添加用户";
+    },
     exp() {}
   }
 };
