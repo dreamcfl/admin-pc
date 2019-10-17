@@ -31,12 +31,15 @@ module.exports = {
     },
     /* 跨域代理 */
     proxy: {
-      [process.env.VUE_APP_BASE_API]: {
-        target: process.env.VUE_APP_BASE_API,
+      "/api": {
+        /* 目标代理服务器地址 */
+        target:
+          "https://www.fastmock.site/mock/8d1cd4026afe8d2c2b2af85fdd719ab2/admin",
+        /* 允许跨域 */
         changeOrigin: true,
-        secure: false,
+        ws: true,
         pathRewrite: {
-          ["^" + process.env.VUE_APP_BASE_API]: ""
+          "^/api": ""
         }
       }
     }
