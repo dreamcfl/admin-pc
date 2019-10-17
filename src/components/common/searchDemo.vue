@@ -10,7 +10,12 @@ export default {
   name: "index",
   data() {
     return {
-      searchData: {}
+      searchData: {
+        age: "",
+        city: "",
+        minTime: "",
+        maxTime: ""
+      }
     };
   },
   components: {
@@ -18,7 +23,6 @@ export default {
   },
 
   created() {
-    this.searchData = {};
     this.searchItem = [
       {
         type: "input",
