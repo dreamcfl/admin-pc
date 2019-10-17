@@ -44,8 +44,8 @@ export default {
         prop: "city",
         placeholder: "请选择城市",
         selectList: [
-          { label: "上海", value: "shanghai" },
-          { label: "杭州", value: "HZ" }
+          { id: "上海", value: "shanghai" },
+          { id: "杭州", value: "HZ" }
         ]
       },
       {
