@@ -115,9 +115,6 @@ export default {
     },
     tableBtn: {
       type: Array,
-      default() {
-        return {};
-      }
     },
     currentData: {
       type: Object,
