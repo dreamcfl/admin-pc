@@ -86,7 +86,7 @@ export function upload (url, data={}) {
       axios.post(url,data )
       .then(response => {
          if (response.data.msg == 'token失效，请重新登录'){
-          router.push("login");
+          router.push({name:"login"});
         }
         if(response.data.code == 200){
           resolve(response.data.data)
@@ -159,7 +159,7 @@ export function get (url, params = {}) {
     })
     .then(response => {
       if (response.data.msg == 'token失效，请重新登录'){
-       router.push("login");
+       router.push({name:"login"});
      }
      if(response.data.code ==200){
        resolve(response.data.data)
@@ -193,7 +193,7 @@ export function post (url, data = {}) {
     axios.post(url, data)
     .then(response => {
       if (response.data.msg == 'token失效，请重新登录'){
-        router.push("login");
+        router.push({name:"login"});
      }
      if(response.data.code ==200){
        resolve(response.data.data)
@@ -227,7 +227,7 @@ export function put(url,data = {}){
     axios.put(url,data)
     .then(response => {
       if (response.data.msg == 'token失效，请重新登录'){
-        router.push("login");
+        router.push({name:"login"});
      }
      if(response.data.code ==200){
        resolve(response.data.data)
@@ -259,7 +259,7 @@ export function del(url,data = {}){
     axios.delete(url,{data:data})
     .then(response => {
       if (response.data.msg == 'token失效，请重新登录'){
-        router.push("login");
+        router.push({name:"login"});
      }
      if(response.data.code ==200){
        resolve(response.data.data)
