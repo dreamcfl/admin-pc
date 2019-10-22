@@ -44,6 +44,10 @@ export default {
   name: "index",
   data() {
     return {
+        nowPage: 1,
+      total: 0,
+      limit: 10,
+      searchItem: [],
       pageReset: true,
       searchData: {
         studentNumber: "",
