@@ -28,6 +28,8 @@
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
           @handleDelete="handleDelete"
+          @handleViewOther="handleViewOther"
+          @handleViewUpdateStatus="handleViewUpdateStatus"
         ></Table>
       </div>
     </el-card>
@@ -44,7 +46,7 @@ export default {
   name: "index",
   data() {
     return {
-        nowPage: 1,
+      nowPage: 1,
       total: 0,
       limit: 10,
       searchItem: [],
@@ -113,7 +115,14 @@ export default {
     this.tableListData = [
       { width: "50", label: "", type: "index" },
       { prop: "loginAccount", width: "", label: "账号" },
+      { prop: "sysMerchantName", width: "", label: "商户名称", type: "a" },
       { prop: "sysRole.name", width: "", label: "角色类型" },
+      {
+        prop: "sysMerchantImgurl",
+        width: "120",
+        label: "商户封面图",
+        type: "img"
+      },
       {
         prop: "userState",
         width: "",
@@ -124,10 +133,26 @@ export default {
       { prop: "phone", width: "", label: "手机号" },
       { prop: "activityNames", width: "", label: "活动", tooltiop: true },
       { prop: "createTime", width: "150", label: "创建时间" },
-      { label: "操作", type: "btn", width: "180", fixed: "right" }
+      { label: "操作", type: "btn", width: "240", fixed: "right" }
     ];
     // 按钮
     this.tableBtn = [
+      //   {
+      //   name: "启 用",
+      //   btnType: "primary",
+      //   handleFn: "handleViewUpdateStatus",
+      //   type: "isShow",
+      //   isShowStatus: "sysMerchantStatus",  // 是否显示的参数
+      //   isShowValue: "2"  // 是否显示的参数值
+      // },
+      // {
+      //   name: "禁 用",
+      //   btnType: "warning",
+      //   handleFn: "handleViewUpdateStatus",
+      //   type: "isShow",
+      //   isShowStatus: "sysMerchantStatus",
+      //   isShowValue: "1"
+      // },
       {
         name: "编 辑",
         btnType: "primary",
@@ -193,7 +218,13 @@ export default {
       this.dialogObj.show = true;
       this.dialogObj.title = "添加用户";
     },
-    exp() {}
+    exp() {},
+    handleViewOther(row) {
+      window.console.log(row);
+    },
+    handleViewUpdateStatus(row) {
+      window.console.log(row);
+    }
   }
 };
 </script>

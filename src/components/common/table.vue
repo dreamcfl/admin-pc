@@ -30,6 +30,22 @@
         >
         </el-table-column>
         <el-table-column
+          v-if="item.type === 'a'"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :key="index"
+        >
+          <template slot-scope="scope">
+            <div>
+              <span class="color-blue" @click="handleClickViewOther(scope.row)">
+                {{ scope.row[item.prop] }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
           v-if="item.type === 'wordbook'"
           :prop="item.prop"
           align="center"
@@ -44,6 +60,26 @@
           </template>
         </el-table-column>
         <el-table-column
+          v-if="item.type === 'img'"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :key="index"
+        >
+          <template slot-scope="scope">
+            <div>
+              <img
+                :src="scope.row[item.prop]"
+                class="img-size"
+                alt=""
+                v-image-preview
+              />
+            </div>
+          </template>
+        </el-table-column>
+
+        <el-table-column
           v-if="item.type === 'btn'"
           :prop="item.prop"
           :label="item.label"
@@ -53,15 +89,31 @@
           :key="index"
         >
           <template slot-scope="scope">
-            <el-button
+            <span
+              class="span-btn-ml"
               v-for="(item, index) in tableBtn"
-              :type="item.btnType"
-              size="mini"
-              plain
               :key="index"
-              @click="handleClick(scope.row, item.handleFn)"
-              >{{ item.name }}</el-button
             >
+              <el-button
+                v-if="item.type === undefined"
+                :type="item.btnType"
+                size="mini"
+                plain
+                @click="handleClick(scope.row, item.handleFn)"
+                >{{ item.name }}</el-button
+              >
+              <el-button
+                v-if="
+                  item.type == 'isShow' &&
+                    scope.row[item.isShowStatus] == item.isShowValue
+                "
+                :type="item.btnType"
+                size="mini"
+                plain
+                @click="handleClick(scope.row, item.handleFn)"
+                >{{ item.name }}</el-button
+              >
+            </span>
           </template>
         </el-table-column>
       </template>
@@ -94,6 +146,9 @@ export default {
       // return this.$parent[fn](row);
       this.$emit(fn, row);
     },
+    handleClickViewOther(val) {
+      this.$emit("handleViewOther", val);
+    },
     // 改变页码
     handleCurrentChange(val) {
       // this.$parent.onPageChange(val);
@@ -114,7 +169,7 @@ export default {
       type: Array
     },
     tableBtn: {
-      type: Array,
+      type: Array
     },
     currentData: {
       type: Object,
@@ -129,5 +184,16 @@ export default {
   margin-top: 5px;
   display: block;
   text-align: right;
+}
+.img-size {
+  width: 100px;
+  cursor: pointer;
+}
+.color-blue {
+  color: rgb(79, 148, 212);
+  cursor: pointer;
+}
+.span-btn-ml button {
+  margin: 5px;
 }
 </style>
