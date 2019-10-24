@@ -26,6 +26,7 @@
           @click.native="handleChange"
           :placeholder="item.placeholder"
           clearable
+          filterable
         >
           <el-option
             v-for="i in item.selectList"
