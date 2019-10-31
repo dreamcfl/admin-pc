@@ -10,6 +10,7 @@
       :on-error="handleAvatarError"
       :http-request="submitUploadImgUrl"
       :limit="1"
+      :on-exceed="handleExceed"
       :file-list="fileList"
     >
       <el-button size="small" type="primary">点击上传</el-button>
@@ -60,6 +61,12 @@ export default {
       }
       return isPDF && isLt5M;
     },
+    handleExceed() {
+      this.$message({
+        type: "warning",
+        message: "只能上传一个文件！"
+      });
+    },
     handleAvatarError() {
       this.$message({
         type: "error",
@@ -69,28 +76,3 @@ export default {
   }
 };
 </script>
-<style>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
-  text-align: center;
-}
-.avatar {
-  width: 120px;
-  height: 120px;
-  display: block;
-}
-</style>
