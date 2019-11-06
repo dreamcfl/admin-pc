@@ -4,6 +4,7 @@
     append-to-body
     :visible.sync="dialogObj.show"
     :close-on-click-modal="false"
+    class="abow_dialog"
     width="700px"
   >
     <el-form
@@ -34,10 +35,10 @@
         ></el-input>
       </el-form-item>
     </el-form>
-    <span slot="footer" class="dialog-footer">
+    <div  class="dialog-footer">
       <el-button type="primary" @click="sub" size="mini">确 定</el-button>
       <el-button @click="dialogObj.show = false" size="mini">取 消</el-button>
-    </span>
+    </div>
   </el-dialog>
 </template>
 <script>
