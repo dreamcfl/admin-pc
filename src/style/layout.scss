@@ -228,6 +228,18 @@
   margin-top: 20px;
 }
 
+// 弹框标题
+.el-dialog__footer,.dialog-footer {
+  text-align: center!important;
+  margin-top: 20px;
+}
+.el-dialog .el-dialog__header{
+  border-bottom: 1px solid #f1f1f1;
+  padding: 15px;
+}
+.el-dialog .el-dialog__title{
+  font-size: 16px;
+}
 
 // 弹框固定
 .abow_dialog {
