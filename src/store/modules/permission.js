@@ -16,6 +16,7 @@ const mutations = {
 };
 // 遍历asyncRoutes动态路由
 // function forSearchArr(route, roles) {
+  // roles = JSON.parse(roles);
 //   let arrNew = [];
 //   for (let item of route) {
 //     let itemNew = { ...item }; //解决浅拷贝共享同一内存地址
