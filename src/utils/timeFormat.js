@@ -84,5 +84,13 @@ export default {
         return i;
       }
     }
-  }
+  },
+  // 案例 formatFloat(1.2+1.2,2)   formatFloat(1.2*1.2,2) // 最多两位小数
+  formatFloat:function(f, digit){
+    /**
+      * js计算丢精度的问题
+      */
+     var m = Math.pow(10, digit);
+     return Math.round(f * m, 10) / m;
+   }
 };
