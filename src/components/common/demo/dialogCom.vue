@@ -35,7 +35,7 @@
         ></el-input>
       </el-form-item>
     </el-form>
-    <div  class="dialog-footer">
+    <div class="dialog-footer">
       <el-button type="primary" @click="sub" size="mini">确 定</el-button>
       <el-button @click="dialogObj.show = false" size="mini">取 消</el-button>
     </div>
@@ -68,12 +68,13 @@ export default {
   },
   methods: {
     initDialog() {
+      // 回显 | 初始化
       if (this.dialogObj.id) {
-        this.form.loginAccount = this.dialogObj.form.loginAccount;
-        this.form.loginPassword = this.dialogObj.form.loginPassword;
+        Object.keys(this.form).forEach(item => {
+          this.form[item] = this.dialogObj.form[item];
+        });
       } else {
-        this.form.loginAccount = "";
-        this.form.loginPassword = "";
+        Object.keys(this.form).forEach(key => (this.form[key] = ""));
       }
     },
     sub: _debounce(function() {
