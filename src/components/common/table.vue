@@ -5,6 +5,7 @@
   <div>
     <el-table
       :data="tableData"
+      :span-method="objectSpanMethod"
       border
       align="center"
       style="width: 100%"
@@ -17,6 +18,7 @@
           type="index"
           :width="item.width"
           :key="index"
+          :index="indexMethod"
         >
         </el-table-column>
         <el-table-column
@@ -39,8 +41,50 @@
         >
           <template slot-scope="scope">
             <div>
-              <span class="color-blue" @click="handleClickViewOther(scope.row)">
+              <span
+                class="color-blue"
+                @click="handleClickViewOther(scope.row)"
+                title="查看详情"
+              >
                 {{ scope.row[item.prop] }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === '_bank'"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :key="index"
+        >
+          <template slot-scope="scope">
+            <div>
+              <span
+                class="color-blue"
+                @click="handleClickViewBank(scope.row)"
+                title="查看详情"
+              >
+                {{ scope.row[item.prop] ? item.text : "" }}
+              </span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-if="item.type === '_rangeTime'"
+          :prop="item.prop"
+          align="center"
+          :label="item.label"
+          :width="item.width"
+          :key="index"
+        >
+          <template slot-scope="scope">
+            <div>
+              <span>
+                {{ item.wordbookList(scope.row[item.time[0]]) }}-{{
+                  item.wordbookList(scope.row[item.time[1]])
+                }}
               </span>
             </div>
           </template>
@@ -55,7 +99,7 @@
         >
           <template slot-scope="scope">
             <div>
-              {{ item.wordbookList(scope.row[item.prop]) }}
+              {{ item.wordbookList(scope.row[item.prop], scope.row) }}
             </div>
           </template>
         </el-table-column>
@@ -73,54 +117,74 @@
                 :src="scope.row[item.prop]"
                 class="img-size"
                 alt=""
+                title="查看详情"
                 v-image-preview
               />
             </div>
           </template>
         </el-table-column>
-
-        <el-table-column
-          v-if="item.type === 'btn'"
-          :prop="item.prop"
-          :label="item.label"
-          :fixed="'' || item.fixed"
-          :width="item.width"
-          align="center"
-          :key="index"
+        <template
+          v-if="
+            $store.state.user.showRoles &&
+              JSON.parse($store.state.user.showRoles)[$route.name] != true
+          "
         >
-          <template slot-scope="scope">
-            <span
-              class="span-btn-ml"
-              v-for="(item, index) in tableBtn"
-              :key="index"
-            >
-              <el-button
-                v-if="item.type === undefined"
-                :type="item.btnType"
-                size="mini"
-                plain
-                @click="handleClick(scope.row, item.handleFn)"
-                >{{ item.name }}</el-button
+          <el-table-column
+            v-if="item.type === 'btn'"
+            :prop="item.prop"
+            :label="item.label"
+            :fixed="'' || item.fixed"
+            :width="item.width"
+            align="center"
+            :key="index"
+          >
+            <template slot-scope="scope">
+              <span
+                class="span-btn-ml"
+                v-for="(item, index) in tableBtn"
+                :key="index"
               >
-              <el-button
-                v-if="
-                  item.type == 'isShow' &&
-                    scope.row[item.isShowStatus] == item.isShowValue
-                "
-                :type="item.btnType"
-                size="mini"
-                plain
-                @click="handleClick(scope.row, item.handleFn)"
-                >{{ item.name }}</el-button
-              >
-            </span>
-          </template>
-        </el-table-column>
+                <el-button
+                  v-if="item.type === undefined"
+                  :type="item.btnType"
+                  size="mini"
+                  plain
+                  @click="handleClick(scope.row, item.handleFn)"
+                  >{{ item.name }}</el-button
+                >
+                <el-button
+                  v-if="
+                    item.type == 'isShow' &&
+                      scope.row[item.isShowStatus] == item.isShowValue
+                  "
+                  :type="item.btnType"
+                  size="mini"
+                  plain
+                  @click="handleClick(scope.row, item.handleFn)"
+                  >{{ item.name }}</el-button
+                >
+                <el-button
+                  v-if="
+                    item.type == 'isNoShow' &&
+                      item.isShowValue.indexOf(scope.row[item.isShowStatus]) ==
+                        -1
+                  "
+                  :type="item.btnType"
+                  size="mini"
+                  plain
+                  @click="handleClick(scope.row, item.handleFn)"
+                  >{{ item.name }}</el-button
+                >
+              </span>
+            </template>
+          </el-table-column>
+        </template>
       </template>
     </el-table>
     <template>
       <div class="page-div">
         <el-pagination
+        v-if="hackReset"
           @current-change="handleCurrentChange"
           @size-change="handleSizeChange"
           :current-page="currentData.currentPage || 1"
@@ -137,14 +201,20 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      hackReset:true
+    };
   },
   mounted() {},
   methods: {
+    // 合并事件
     // 按钮事件
     handleClick(row, fn) {
       // return this.$parent[fn](row);
       this.$emit(fn, row);
+    },
+    handleClickViewBank(val) {
+      this.$emit("handleClickViewBank", val);
     },
     handleClickViewOther(val) {
       this.$emit("handleViewOther", val);
@@ -157,10 +227,22 @@ export default {
     // 改变每页数量
     handleSizeChange(val) {
       // this.$parent.onSizeChange(val);
+      console.log(this.currentData)
+      this.hackReset=false
+      this.$nextTick(function(){
+          this.hackReset=true
+          // this.currentData.size=5
+      })
       this.$emit("onSizeChange", val);
     }
   },
   props: {
+    objectSpanMethod: {
+      type: Function
+    },
+    indexMethod:{
+      type: Function
+    },
     tableData: {
       type: Array,
       required: true

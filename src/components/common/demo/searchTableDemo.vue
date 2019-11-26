@@ -188,6 +188,7 @@ export default {
       this.getList();
     },
     onSizeChange(val) {
+       this.currentData.size= val
       this.nowPage = 1;
       this.limit = val;
       this.getList();
