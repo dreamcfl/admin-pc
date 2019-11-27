@@ -184,7 +184,6 @@
     <template>
       <div class="page-div">
         <el-pagination
-        v-if="hackReset"
           @current-change="handleCurrentChange"
           @size-change="handleSizeChange"
           :current-page="currentData.currentPage || 1"
@@ -201,13 +200,16 @@
 <script>
 export default {
   data() {
-    return {
-      hackReset:true
-    };
+    return {};
   },
   mounted() {},
   methods: {
-    // 合并事件
+    // 索引事件
+    indexMethod(val) {
+      return (
+        (this.currentData.currentPage - 1) * this.currentData.size + val + 1
+      );
+    },
     // 按钮事件
     handleClick(row, fn) {
       // return this.$parent[fn](row);
@@ -227,12 +229,6 @@ export default {
     // 改变每页数量
     handleSizeChange(val) {
       // this.$parent.onSizeChange(val);
-      console.log(this.currentData)
-      this.hackReset=false
-      this.$nextTick(function(){
-          this.hackReset=true
-          // this.currentData.size=5
-      })
       this.$emit("onSizeChange", val);
     }
   },
@@ -240,9 +236,9 @@ export default {
     objectSpanMethod: {
       type: Function
     },
-    indexMethod:{
-      type: Function
-    },
+    // indexMethod: {
+    //   type: Function
+    // },
     tableData: {
       type: Array,
       required: true

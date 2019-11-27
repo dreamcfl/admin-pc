@@ -23,7 +23,6 @@
           :tableListData="tableListData"
           :tableBtn="tableBtn"
           :currentData="currentData"
-          v-if="pageReset"
           @onPageChange="onPageChange"
           @onSizeChange="onSizeChange"
           @handleEdit="handleEdit"
@@ -46,11 +45,7 @@ export default {
   name: "index",
   data() {
     return {
-      nowPage: 1,
-      total: 0,
-      limit: 10,
       searchItem: [],
-      pageReset: true,
       searchData: {
         studentNumber: "",
         name: "",
@@ -61,7 +56,11 @@ export default {
       },
       studentStatusList: STUDENTSTATUSLIST,
       tableData: [],
-      currentData: {},
+      currentData: {
+        currentPage: 1,
+        size: 10,
+        total: 0
+      },
       dialogObj: {
         id: "",
         title: "",
@@ -172,29 +171,28 @@ export default {
     },
     // 获取search信息
     getDataList(val) {
-      window.console.log(val);
+      this.currentData.size = 10;
+      this.currentData.currentPage = 1;
       this.searchData = val;
-      this.nowPage = 1;
-      this.limit = 10;
-      this.pageReset = false;
-      this.$nextTick(() => {
-        this.getList();
-        this.pageReset = true;
-      });
+      this.getList();
     },
     // 分页
     onPageChange(val) {
-      this.nowPage = val;
+      this.currentData.currentPage = val;
       this.getList();
     },
     onSizeChange(val) {
-       this.currentData.size= val
-      this.nowPage = 1;
-      this.limit = val;
+      this.currentData.size = val;
+      this.currentData.currentPage = 1;
       this.getList();
     },
     //获取列表
     getList() {
+      let json = {
+        pageStart: this.currentData.currentPage,
+        pageSize: this.currentData.size
+      };
+      console.log(json);
       this.tableData = [];
       this.currentData.total = this.tableData.length;
     },
