@@ -13,7 +13,7 @@
         </el-dropdown-item>
         <el-dropdown-item>
           <router-link to="/personal"
-            ><i class="el-icon-s-custom"></i>我的主页</router-link
+            ><i class="el-icon-s-custom"></i>github地址</router-link
           >
         </el-dropdown-item>
         <el-dropdown-item divided>

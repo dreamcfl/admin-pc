@@ -21,6 +21,7 @@ module.exports = {
     host: "localhost",
     /* 本地ip地址 */
     // host: "192.168.1.109",
+    host: "0.0.0.0", //局域网和本地访问
     port: "8080",
     hot: true,
     /* 自动打开浏览器 */
