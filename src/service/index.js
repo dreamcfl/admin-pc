@@ -9,6 +9,7 @@ function startLoading() {
     lock: true,
     text: "努力加载中……",
     background: "rgba(0, 0, 0, 0.1)"
+	  // target: document.querySelector(".banner") // 设置加载动画区域
   });
 }
 
